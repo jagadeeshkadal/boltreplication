@@ -7,7 +7,7 @@ services:
       target: bolt-ai-production
     ports:
       - '5173:5173'
-    env_file: 
+    env_file:
       - '.env'
       - '.env.local'
     environment:
@@ -38,8 +38,8 @@ services:
   app-dev:
     image: bolt-ai:development
     build:
-      target: bolt-ai-development
-    env_file: 
+      target: development
+    env_file:
       - '.env'
       - '.env.local'
     environment:
@@ -75,7 +75,7 @@ services:
     ports:
       - '5173:5173'
     command: pnpm run dev --host 0.0.0.0
-    profiles: ['development', 'default']
+    profiles: [ 'development', 'default' ]
 
   app-prebuild:
     image: ghcr.io/stackblitz-labs/bolt.diy:latest
