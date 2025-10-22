@@ -75,7 +75,7 @@ services:
     ports:
       - '5173:5173'
     command: pnpm run dev --host 0.0.0.0
-    profiles: [ 'development', 'default' ]
+    profiles: ['development', 'default']
 
   app-prebuild:
     image: ghcr.io/stackblitz-labs/bolt.diy:latest
