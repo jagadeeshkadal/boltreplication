@@ -1,0 +1,15 @@
+{
+  // Name of your Worker project
+  "name": "bolt",
+
+  // Set compatibility date to today
+  "compatibility_date": "2025-10-22",
+
+  // Specify where your static assets are
+  "assets": {
+    "directory": "./build"
+  },
+
+  // Optional: set main entry for Worker script if needed
+  "main": "index.js"
+}
