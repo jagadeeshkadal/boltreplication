@@ -11,11 +11,9 @@
     "email": "maintainers@bolt.diy"
   },
   "scripts": {
-   
-  
-    "build": "set NODE_OPTIONS=--max-old-space-size=4096 && remix vite:build",
+     "build": "remix build",
+    "dev": "remix dev",
     "vercel-start": "node server.js",
-    "dev": "node pre-start.cjs  && remix vite:dev",
     "test": "vitest --run",
     "test:watch": "vitest",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint app",
