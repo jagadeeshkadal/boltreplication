@@ -11,8 +11,11 @@
     "email": "maintainers@bolt.diy"
   },
   "scripts": {
-     "build": "remix build",
     "dev": "remix dev",
+    "build": "remix build",
+    "start": "remix-serve build",
+    "vercel-build": "npm run build",
+
     "vercel-start": "node server.js",
     "test": "vitest --run",
     "test:watch": "vitest",
@@ -20,7 +23,6 @@
     "lint:fix": "npm run lint -- --fix && prettier app --write",
     "start:windows": "wrangler pages dev ./build/client",
     "start:unix": "bindings=$(./bindings.sh) && wrangler pages dev ./build/client $bindings",
-    "start": "node -e \"const { spawn } = require('child_process'); const isWindows = process.platform === 'win32'; const cmd = isWindows ? 'npm run start:windows' : 'npm run start:unix'; const child = spawn(cmd, { shell: true, stdio: 'inherit' }); child.on('exit', code => process.exit(code));\"",
     "dockerstart": "bindings=$(./bindings.sh) && wrangler pages dev ./build/client $bindings --ip 0.0.0.0 --port 5173 --no-show-interactive-dev-session",
     "dockerrun": "docker run -it -d --name bolt-ai-live -p 5173:5173 --env-file .env.local bolt-ai",
     "dockerbuild:prod": "docker build -t bolt-ai:production -t bolt-ai:latest --target bolt-ai-production .",
@@ -41,7 +43,6 @@
     "electron:build:win": "rm -rf dist && pnpm electron:build:renderer && pnpm electron:build:deps && electron-builder --win",
     "electron:build:linux": "rm -rf dist && pnpm electron:build:renderer && pnpm electron:build:deps && electron-builder --linux",
     "electron:build:dist": "rm -rf dist && pnpm electron:build:renderer && pnpm electron:build:deps && electron-builder --mwl"
-    
   },
   "engines": {
     "node": ">=18.18.0"
@@ -99,6 +100,7 @@
     "@remix-run/cloudflare-pages": "^2.17.1",
     "@remix-run/node": "^2.15.2",
     "@remix-run/react": "^2.15.2",
+    "@remix-run/vercel": "^1.19.3",
     "@tanstack/react-virtual": "^3.13.0",
     "@types/react-beautiful-dnd": "^13.1.8",
     "@uiw/codemirror-theme-vscode": "^4.23.6",
@@ -206,7 +208,7 @@
     "vite-plugin-optimize-css-modules": "^1.1.0",
     "vite-tsconfig-paths": "^4.3.2",
     "vitest": "^2.1.7",
-    "wrangler": "^4.5.1"
+    "wrangler": "^3.114.15"
   },
   "resolutions": {
     "@typescript-eslint/utils": "^8.0.0-alpha.30"
