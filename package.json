@@ -13,7 +13,8 @@
   "scripts": {
    
   
-    "build": "NODE_OPTIONS='--max-old-space-size=4096' remix vite:build",
+    "build": "set NODE_OPTIONS=--max-old-space-size=4096 && remix vite:build",
+    "vercel-start": "node server.js",
     "dev": "node pre-start.cjs  && remix vite:dev",
     "test": "vitest --run",
     "test:watch": "vitest",
